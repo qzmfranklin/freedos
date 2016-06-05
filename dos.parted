@@ -1,0 +1,4 @@
+unit %
+mklabel msdos
+mkpart primary fat16 0 100%
+set 1 boot on
