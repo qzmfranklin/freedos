@@ -1,0 +1,13 @@
+Create a bootable FreeDOS disk image of custom disk size and content.
+
+This repo is inspired by the following blog:
+    https://www.chtaube.eu/computers/freedos/bootable-usb/image-generation-howto/
+
+Usage:
+1.  Download and copy zip files into the bios/ directory.
+2.  Create the bootable image:
+        ./mkfd11.py
+    A raw image file, dos.img, is generated.
+3.  Copy the bytes to your usb stick using dd:
+        Linux:      sudo dd if=dos.img of=/dev/devX bs=1M
+        Darwin:     sudo dd if=dos.img of=/dev/diskX bs=1M
