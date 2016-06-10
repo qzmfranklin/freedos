@@ -4,7 +4,7 @@
 !FILES=40
 !DOSDATA=UMB
 !MENUCOLOR=7,0
-MENUDEFAULT=1,5
+MENUDEFAULT=4,5
 MENU 1 - Load FreeDOS with JEMMEX, no EMS (most UMBs), max RAM free
 MENU 2 - Load FreeDOS with EMM386+EMS and SHARE
 MENU 3 - Load FreeDOS including HIMEMX XMS-memory driver

@@ -26,7 +26,7 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/zhongming/git/sm-bios/bootable-img/dos.img'/>
+      <source file='/home/zhongming/git/freedos/dos.img'/>
       <target dev='vda' bus='virtio'/>
       <boot order='1'/>
       <alias name='virtio-disk0'/>

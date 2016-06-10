@@ -67,13 +67,15 @@ def main():
     __download_iso(iso_url, iso_fname)
 
     def __cleanup():
-        time.sleep(0.5)
         cmdlist = [
                 'sudo umount {}'.format(new_dev),
+                'sleep 0.5',
                 'sudo umount {}'.format(old_dev),
+                'sleep 0.5',
                 'sudo rm -R {}'.format(mnt_dir),
                 'sudo rm -rf {}'.format(tmp_dir),
-                'sudo kpartx -dv {}'.format(img_fname)
+                'sudo kpartx -dv {}'.format(img_fname),
+                'sleep 0.5',
         ]
         for cmd in cmdlist:
             print(RED + cmd + NONE)
@@ -101,10 +103,14 @@ def main():
             'sudo mkfs.fat -F 16 {}'.format(devpath),
             # Install the syslinux bootloader.
             'sudo syslinux -i {}'.format(devpath),
+            # Create the mnt directory
+            'mkdir mnt ||  true',
             # Mount the mem device.
             'mkdir -p {1} || true; sudo mount {0} {1}'.format(devpath, new_dev),
+            'sleep 0.5',
             # Mount the freedos 1.1 source iso image.
             'mkdir -p {1} || true; sudo mount {0} {1}'.format(iso_fname, old_dev),
+            'sleep 0.5',
             # Unpack packages and copy files to the memdisk.
             'mkdir -p {}'.format(tmp_dir),
             'sudo mkdir -p {}/fdos'.format(new_dev),
@@ -123,7 +129,6 @@ def main():
             'sudo cp -r {}/flash/* {}/flash'.format(tmp_dir, new_dev),
     ]
     for cmd in cmdlist:
-        time.sleep(0.5)
         print(RED + cmd + NONE)
         subprocess.check_call(cmd, shell = True)
 
