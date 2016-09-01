@@ -17,6 +17,8 @@
   </features>
   <cpu mode='custom' match='exact'>
     <model fallback='allow'>Haswell</model>
+    <feature policy='disable' name='rtm'/>
+    <feature policy='disable' name='hle'/>
   </cpu>
   <clock offset='utc'/>
   <on_poweroff>destroy</on_poweroff>

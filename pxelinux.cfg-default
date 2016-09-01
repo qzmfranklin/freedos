@@ -1,0 +1,5 @@
+default freedos
+label freedos
+  kernel freedos/memdisk
+  initrd freedos/dos.img.gz
+  append harddisk
